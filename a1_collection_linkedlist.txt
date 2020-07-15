@@ -1,0 +1,75 @@
+package mydemo;
+import java.util.*;
+public class StudentMain {
+	private Scanner sc;
+	Student stud;
+	String choice="y";
+	private List<Student> s;
+	public StudentMain()
+	{
+		int ch=1;
+		
+		sc=new Scanner(System.in);
+		s=new LinkedList<Student>();
+		
+		while(choice.equals("y"))
+		{
+			System.out.println("Menu is ");
+			System.out.println("1.Adding ");
+			System.out.println("2.Removing ");
+			ch=sc.nextInt();
+			if(ch==1)
+			{
+				add();
+			}
+			if(ch==2)
+			{
+				deleteData();
+			}
+			System.out.println("do u want to continue y/n");
+			choice=sc.next();
+			
+		}
+	}
+		public void add()
+		{
+			stud=new Student();
+			System.out.println("Enter student id ");
+			stud.setStudentid(sc.nextInt());
+			System.out.println("Enter student name");
+			stud.setStudentname(sc.next());
+			s.add(stud);
+			for(Student sdetails:s)
+			{
+				System.out.println(sdetails.getStudentname());
+			}
+			
+		}
+		public void deleteData()
+		{
+			System.out.println("Enter the studentid which u want to delete");
+			int id=sc.nextInt();
+			Iterator<Student> siter=s.iterator();
+			while(siter.hasNext())
+			{
+				Student sdetail=siter.next();
+				System.out.println("student id here is "+sdetail.getStudentid());
+					if(id==sdetail.getStudentid())
+					{
+						s.remove(sdetail);
+					}
+					else
+					{
+						System.out.println("data does not exist");
+					}
+			}
+		
+	}
+	public static void main(String args[])
+	{
+		StudentMain smain=new StudentMain();
+		smain.add();
+		smain.deleteData();
+	}
+
+}

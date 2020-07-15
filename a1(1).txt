@@ -1,0 +1,54 @@
+package collectiondemo;
+import java.util.*;
+public class ListDemo {
+	private List<String> lstring;
+	private List<String> newstring;
+	public ListDemo()
+	{
+		lstring=new ArrayList<String>();
+		newstring=new ArrayList<String>();
+		
+		
+	}
+	public void diffoperations()
+	{
+		lstring.add("one");
+		lstring.add("to");
+		lstring.add("java");
+		lstring.add("three");
+		lstring.add("four");
+		for(String s:lstring)
+		{
+			System.out.println("Values are "+s);
+		}
+		lstring.remove(2);
+		for(String s1:lstring)
+		{
+			System.out.println("After removing"+s1);
+			
+		}
+		newstring.add("welccome");
+		newstring.add("to");
+		newstring.add("java");
+		newstring.add("program");
+		newstring.addAll(lstring);
+		Iterator<String> iter=newstring.iterator();
+		while(iter.hasNext())
+		{
+			System.out.println("NExt elements "+iter.next());
+		}
+		newstring.retainAll(lstring);
+		for(String s:newstring)
+		{
+			System.out.println("String is "+s);
+		}
+	}
+	public static void main(String args[])
+	{
+		ListDemo l1=new ListDemo();
+		l1.diffoperations();
+		
+		
+	}
+
+}

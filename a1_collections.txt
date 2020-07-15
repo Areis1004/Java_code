@@ -1,0 +1,151 @@
+package collectiondemo;
+
+public class Employee {	
+	
+private String ecode;
+@Override
+public int hashCode() {
+	final int prime = 31;
+	int result = 1;
+	result = prime * result + ((ecode == null) ? 0 : ecode.hashCode());
+	result = prime * result + ((ename == null) ? 0 : ename.hashCode());
+	return result;
+}
+@Override
+public boolean equals(Object obj) {
+	if (this == obj)
+		return true;
+	if (obj == null)
+		return false;
+	if (getClass() != obj.getClass())
+		return false;
+	Employee other = (Employee) obj;
+	if (ecode == null) {
+		if (other.ecode != null)
+			return false;
+	} else if (!ecode.equals(other.ecode))
+		return false;
+	if (ename == null) {
+		if (other.ename != null)
+			return false;
+	} else if (!ename.equals(other.ename))
+		return false;
+	return true;
+}
+public String getEcode() {
+	return ecode;
+}
+public void setEcode(String ecode) {
+	this.ecode = ecode;
+}
+public String getEname() {
+	return ename;
+}
+public void setEname(String ename) {
+	this.ename = ename;
+}
+public double getSalary() {
+	return salary;
+}
+public void setSalary(double salary) {
+	this.salary = salary;
+}
+private String ename;
+private double salary;
+}
+
+EmployeeInter.java
+
+package collectiondemo;
+import java.util.*;
+public interface EmployeeInter {
+	public void addEmployee();
+	public void removeEmployee(Employee e);
+	public List<Employee> allEmployee();
+	
+
+}
+EmployeeOp.java
+
+package collectiondemo;
+
+import java.util.*;
+
+public class EmployeeOp implements EmployeeInter {
+private List<Employee> emplist;
+private Scanner sc;
+int noofemployee;
+	public EmployeeOp()
+	{
+		sc=new Scanner(System.in);
+		emplist=new ArrayList<Employee>();
+	}
+	@Override
+	public void addEmployee() {
+		System.out.println("Enter no of Employees");
+		noofemployee=sc.nextInt();
+		int x=1;
+		while(x<=noofemployee)
+		{
+			Employee e1=new Employee();
+			System.out.println("Enter employee id");
+			e1.setEcode(sc.next());
+			System.out.println("Enter Employee name");
+			e1.setEname(sc.next());
+			System.out.println("enter salary");
+			e1.setSalary(sc.nextDouble());
+			emplist.add(e1);
+			x++;
+			
+		}
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeEmployee(Employee e) {
+		emplist.remove(e);
+		
+	}
+
+	@Override
+	public List<Employee> allEmployee() {
+	
+	return emplist;
+	}
+	
+
+}
+
+Main
+package collectiondemo;
+import java.util.*;
+public class Main {
+	static Scanner sc;
+	private static List<Employee> lemp=new ArrayList<Employee>();
+	public static void main(String s[])
+	{
+		sc=new Scanner(System.in);
+		EmployeeOp o=new EmployeeOp();
+		o.addEmployee();
+		Employee e1=new Employee();
+		System.out.println("Enter the details of employee which you wwant to remove");
+		System.out.println("Enter code");
+		e1.setEcode(sc.next());
+		System.out.println("Enter employee name");
+		e1.setEname(sc.next());
+		o.removeEmployee(e1);
+		lemp=o.allEmployee();
+		for(Employee ldata:lemp)
+		{
+			System.out.println("Employee code"+ldata.getEcode());
+			System.out.println("Name "+ldata.getEname());
+		}
+		
+		
+		
+		
+	}
+
+}
+

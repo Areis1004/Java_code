@@ -1,0 +1,22 @@
+1) Create a collection of Strings in a set. 
+
+Ask the user which words he want to search from collection. if that word exist it should display the
+word otherwise display it doesnt exist.
+
+
+2) Create a class called University which will store list of Colleges.
+
+
+University
+		universitycode
+		universityname
+		city
+
+
+	College
+		collegecode
+		collegename
+		state
+
+
+It should display list of colleges under particular university.		
